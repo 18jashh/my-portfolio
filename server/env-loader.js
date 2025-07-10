@@ -1,0 +1,3 @@
+// This file loads environment variables from .env
+require('dotenv').config();
+// ...existing code...

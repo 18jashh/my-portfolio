@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    form { max-width: 400px; margin: auto; }
+    label { display: block; margin-top: 1rem; }
+    input, textarea { width: 100%; padding: 0.5rem; margin-top: 0.25rem; }
+    button { margin-top: 1rem; padding: 0.5rem 1rem; }
+    .message { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h2>Contact Us</h2>
+  <form id="contactForm" method="POST" action="/send">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Send</button>
+    <div class="message" id="formMessage"></div>
+  </form>
+  <script>
+    const form = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new URLSearchParams(new FormData(form));
+      const response = await fetch('/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData
+      });
+      const result = await response.json();
+      formMessage.textContent = result.success ? result.message : result.error;
+      formMessage.style.color = result.success ? 'green' : 'red';
+      if (result.success) form.reset();
+    });
+  </script>
+</body>
+</html>
