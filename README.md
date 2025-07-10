@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Welcome to your Online Profile project
 
 ## Project info
@@ -71,3 +72,7 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.myprofile.com/tips-tricks/custom-domain#step-by-step-guide)
+=======
+# my-portfolio
+Modern, responsive developer portfolio with contact form (email via Nodemailer), blog section with "Read More", and interactive contact links (call, email, location).
+>>>>>>> adb32759435e6b67b73283e0ac14b28db05e0b52
